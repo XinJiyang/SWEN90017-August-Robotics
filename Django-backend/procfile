@@ -1,0 +1,4 @@
+release: python Django-backend/manage.py migrate
+
+web: gunicorn --chdir Django-backend AugustRoboticsBackend.wsgi:application
+

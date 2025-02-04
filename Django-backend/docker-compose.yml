@@ -1,0 +1,20 @@
+version: "3.11"
+
+services:
+  backend:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    command: sh -c "python manage.py makemigrations; python manage.py migrate; python manage.py initgroups; python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=Admin
+    ports:
+      - "8080:80"

@@ -1,0 +1,1 @@
+import{_ as e,o as c,c as t,a as s}from"./index-e7e6ed7e.js";const o={},n={class:"client"},_=s("h2",null,"client",-1),a=[_];function r(i,l){return c(),t("div",n,a)}const f=e(o,[["render",r]]);export{f as default};

@@ -1,0 +1,40 @@
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+,pytest_cache/
+*.py[cod]
+*$py.class
+
+# Local development settings
+*.env
+*.sqlite3
+
+
+# Logs and media files
+log/
+media/
+
+# Configuration files
+*.cfg
+
+# Dependency directories
+venv/
+env/
+*/.venv/
+*/.env/
+
+# Compiled Python bytecode
+*.pyc
+
+# Compiled C extensions
+*.so
+
+# Coverage data
+htmlcov/
+.coverage
+
+# IDE settings
+.vscode/
+.idea/
+*.iml
+data/

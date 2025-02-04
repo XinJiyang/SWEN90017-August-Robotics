@@ -1,0 +1,1 @@
+import{C as e}from"./client-form-cbf5db92.js";import{b as o,o as t,l as r}from"./index-4ba7bd9a.js";import"./client-205bbaaf.js";import"./country-b5facef9.js";const _=o({__name:"detail",setup(a){return(m,n)=>(t(),r(e,{mode:"view"}))}});export{_ as default};

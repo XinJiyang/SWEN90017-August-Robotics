@@ -1,0 +1,1 @@
+import{_ as s,o as e,c as o,a}from"./index-e7e6ed7e.js";const c={},t={class:"dashboard"},r=a("h2",null,"dashboard",-1),_=[r];function d(n,h){return e(),o("div",t,_)}const l=s(c,[["render",d]]);export{l as default};

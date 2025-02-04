@@ -1,0 +1,1 @@
+import{_ as e,o,c as t,a as c}from"./index-4ba7bd9a.js";const s={},_={class:"newjob"},n=c("h2",null,"Create Job",-1),a=[n];function r(d,i){return o(),t("div",_,a)}const f=e(s,[["render",r]]);export{f as default};

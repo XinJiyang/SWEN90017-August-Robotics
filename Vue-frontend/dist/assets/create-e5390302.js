@@ -1,0 +1,1 @@
+import{C as n}from"./client-form-cbf5db92.js";import{u as a}from"./client-205bbaaf.js";import{b as s,u as c,o as i,l as m}from"./index-4ba7bd9a.js";import"./country-b5facef9.js";const d=s({__name:"create",setup(u){const t=a(),o=c();function r(e){t.addClient(e),o.push("/client")}return(e,l)=>(i(),m(n,{mode:"edit",onCreateClient:r}))}});export{d as default};
