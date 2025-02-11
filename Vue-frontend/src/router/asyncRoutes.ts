@@ -89,15 +89,15 @@ const asyncRoutes: RouteRecordRaw[] = [
       icon: 'Avatar'
     }
   },
-  {
-    path: '/user',
-    name: 'user',
-    component: () => import('../views/user/user.vue'),
-    meta: {
-      icon: 'User',
-      roles: ['admin']
-    }
-  }
+  // {
+  //   path: '/user',
+  //   name: 'user',
+  //   component: () => import('../views/user/user.vue'),
+  //   meta: {
+  //     icon: 'User',
+  //     roles: ['admin']
+  //   }
+  // }
 ];
 
 export default asyncRoutes;

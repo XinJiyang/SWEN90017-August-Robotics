@@ -99,11 +99,11 @@ WSGI_APPLICATION = 'AugustRoboticsBackend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'test-dev', 
-        'USER': 'weizhao1', ## change 'postgres' to your PostgreSQL username
-        'PASSWORD': 'pass4teamR!',  ## change 'postgres' to your PostgreSQL password
-        'HOST': 'backend-data.postgres.database.azure.com', ## change 'db' to 'localhost' if you are not using docker
-        'PORT': 5432,
+        'NAME': os.getenv('DATABASE_NAME', 'postgres'),
+        'USER': os.getenv('DATABASE_USER', 'postgres'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD', '3123314'),
+        'HOST': os.getenv('DATABASE_HOST', 'db'),  # 这里必须是 `db`，与 docker-compose.yml 里的 `db` 对应
+        'PORT': '5432',
     }
 }
 
@@ -146,12 +146,15 @@ DOCS_ROOT = 'docs/_build'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-import django_heroku
-django_heroku.settings(locals())
+APPEND_SLASH = True

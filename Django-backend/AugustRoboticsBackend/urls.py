@@ -30,6 +30,8 @@ from AccountManagement.views import (
 
 from django.conf import settings
 
+print("Register view loaded:", av.register)
+
 schema_view = get_schema_view(
     openapi.Info(
         title="Snippets API",
@@ -44,8 +46,8 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
+                  path("user/register/", av.register, name="register"),
                   path("user/<str:username>/", av.UserAPIView.as_view(), name="user"),
-                  path("user/register", av.register, name="register"),
                   path("", views.docs, name="docs"),
                   path('client/add', dc.add_client, name="client_add"),
                   path('client/update', dc.update_client, name="client_update"),

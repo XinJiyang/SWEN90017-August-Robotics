@@ -5,11 +5,32 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
-    command: sh -c "python manage.py makemigrations; python manage.py migrate; python manage.py initgroups; python manage.py runserver 0.0.0.0:8000"
+    command: sh -c "python manage.py makemigrations && python manage.py migrate && python manage.py initgroups && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/app
     ports:
       - "8000:8000"
+    depends_on:
+      - db  # 确保数据库先启动
+    environment:
+      - DATABASE_HOST=db  # 设置数据库的主机名，Django 连接时用 "db"
+      - DATABASE_NAME=postgres  # 数据库名称
+      - DATABASE_USER=postgres  # 数据库用户名
+      - DATABASE_PASSWORD=3123314  # 数据库密码
+    networks:
+      - mynetwork  # 让 `backend` 和 `db` 共享同一个网络
+
+  db:
+    image: postgres:15  # 选择 PostgreSQL 版本
+    restart: always
+    environment:
+      POSTGRES_DB: postgres  # 创建数据库
+      POSTGRES_USER: postgres  # 数据库用户
+      POSTGRES_PASSWORD: 3123314  # 数据库密码
+    ports:
+      - "5432:5432"  # 暴露数据库端口（仅调试用）
+    networks:
+      - mynetwork  # 共享同一个网络
 
   pgadmin:
     image: dpage/pgadmin4
@@ -18,3 +39,11 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=Admin
     ports:
       - "8080:80"
+    depends_on:
+      - db
+    networks:
+      - mynetwork  # 共享同一个网络
+
+networks:
+  mynetwork:  # 定义一个共享网络
+

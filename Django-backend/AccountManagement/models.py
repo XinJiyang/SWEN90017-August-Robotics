@@ -14,7 +14,7 @@ class Account(AbstractUser):
     ]
 
     privilege = models.CharField(choices=PRIVILEGE_CHOICES, default=VIEWER)
-    email = models.EmailField(verbose_name='user_email', max_length=32)
+    email = models.EmailField(verbose_name='user_email', max_length=32, blank=True, null=True)
 
     groups = models.ManyToManyField(
         Group,
