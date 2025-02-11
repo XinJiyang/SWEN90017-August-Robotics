@@ -42,14 +42,21 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
 
-      - name: Run docker compose
+      - name: Install Docker Compose
         run: |
-          sh build-project-docker.sh
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
+      - name: Ensure script is executable
+        run: chmod +x build-project-docker.sh
+
+      - name: Run docker compose
+        run: ./build-project-docker.sh
 
       - name: Run the pytest
         run: |
-          docker-compose exec -T backend pytest
+          docker compose exec -T backend pytest
 
       - name: Shot down docker-compose
         run: |
-          docker-compose down
+          docker compose down
